@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import { FiAlignJustify } from "react-icons/fi"
 import logo from "../assets/Frame 1.png"
+import { StaticImage } from "gatsby-plugin-image"
 const Navbar = () => {
   const [show, setShow] = useState(false)
 
@@ -10,7 +11,11 @@ const Navbar = () => {
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <img src={logo} alt="logo" />
+            <StaticImage
+              src="../assets/Frame 1.png"
+              alt="logo"
+              placeholder="tracedSVG"
+            />
           </Link>
           <button className="nav-btn" onClick={() => setShow(!show)}>
             <FiAlignJustify />
