@@ -3,7 +3,11 @@ import Layout from "../components/Layout"
 import { StaticImage } from "gatsby-plugin-image"
 import RecipesList from "../components/RecipesList"
 import { Link, graphql } from "gatsby"
-const About = () => {
+const About = ({
+  data: {
+    ACR: { nodes },
+  },
+}) => {
   return (
     <Layout>
       <main className="page">
@@ -32,7 +36,7 @@ const About = () => {
         </section>
         <section className="featured-recipes">
           <h5>Check These Out !!</h5>
-          <RecipesList />
+          <RecipesList nodes={nodes} />
         </section>
       </main>
     </Layout>
@@ -41,7 +45,7 @@ const About = () => {
 
 export const query = graphql`
   {
-    allContentfulRecipe(
+    ACR: allContentfulRecipe(
       sort: { fields: title, order: ASC }
       filter: { featured: { eq: true } }
     ) {
